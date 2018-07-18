@@ -11,6 +11,10 @@
     "react": "16.4.1",
     "react-native": "0.55.4",
     "react-native-gps-state": "https://github.com/enieber/react-native-gps-state.git",
+    "react-native-maps": "^0.21.0",
+    "react-native-open-street-map": "https://github.com/enieber/react-native-open-street-map",
+    "react-navigation": "^2.7.0",
+    "react-navigation-redux-helpers": "^2.0.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },

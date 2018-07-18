@@ -3,13 +3,10 @@ import {
   View,
   Button,
   TextInput,
+  Alert,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import { addItem } from './duck';
-
-class AddCar extends Component {
+export default class AddCar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,11 +35,15 @@ class AddCar extends Component {
               title,
               description,
             } = this.state;
-            this.props.addItem({ title, description });
-            this.setState({
-              title: '',
-              description: '',
-            });
+            if (title.length > 0 && description.length > 0) {
+              this.props.addItem({ title, description });
+              this.setState({
+                title: '',
+                description: '',
+              });
+            } else {
+              Alert.alert('Invalid Car', 'the car is not empty');
+            }
           }}
           title="Add"
           color="#841584"
@@ -51,17 +52,3 @@ class AddCar extends Component {
     );
   }
 }
-
-const mapStateToProps = (state, prop) => {
-  return {
-    listCar: state.car.items,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addItem: bindActionCreators(addItem, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddCar);

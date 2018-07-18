@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   FlatList,
@@ -7,7 +6,7 @@ import {
 
 import Car from './Car';
 
-class ListCar extends Component {
+export default class ListCar extends Component {
   constructor(props) {
     super(props)
     this.state = {};
@@ -31,11 +30,3 @@ class ListCar extends Component {
   }
 
 }
-
-const mapStateToProps = (state, prop) => {
-  return {
-    listCar: state.car.items,
-  }
-}
-
-export default connect(mapStateToProps)(ListCar);
