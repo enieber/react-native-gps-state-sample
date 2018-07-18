@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import GPSState from 'react-native-gps-state';
+import { Provider } from 'react-redux';
+
+import Store from './store';
+import ListCar from './car/ListCar';
+import AddCar from './car/AddCar';
+
+const StoreInstance = Store();
 
 export default class App extends Component {
   componentWillMount(){
@@ -35,10 +42,12 @@ export default class App extends Component {
   
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>React Native With GPS STATE!</Text>
-        <Text style={styles.instructions}>Running eventlistener gps status change</Text>
-      </View>
+      <Provider store={StoreInstance}>
+        <View>
+          <AddCar />
+          <ListCar/>
+        </View>
+      </Provider>
     );
   }
 }
